@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "a39e6db1-7a2e-431f-90de-f1169548e782",
+		"name": "CLMEL2022-DEVNET-1243",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5737959"
+	},
+	"item": [
+		{
+			"name": "Get Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", data.Token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46R3JhcGV2aW5lMQ=="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{dnac}}:{{port}}/api/system/v1/auth/token",
+					"protocol": "https",
+					"host": [
+						"{{dnac}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"system",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://{{dnac}}:{{port}}/dna/intent/api/v1/onboarding/pnp-device",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"console.log(\"here\");",
+							"console.log(data.response);",
+							"if (data.response) {",
+							"    for (i = 0; i < data.response.length; i++) { ",
+							"        if (data.response[i].timeType == 'GLOBAL'){",
+							"            postman.setEnvironmentVariable(\"GLOBALtime\", data.response[i].time  );",
+							"        }",
+							"        if (data.response[i].timeType == 'CLIENT'){",
+							"            postman.setEnvironmentVariable(\"CLIENTtime\", data.response[i].time  );",
+							"        }",
+							"    }",
+							"}",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "{{token}}"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"deviceInfo\": {\n        \"hostname\": \"SVOL-IE3400-01\",\n        \"serialNumber\": \"{{device_serial}}\",\n        \"tags\": \"TrustSec\"\n        }\n    }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dnac}}:{{port}}/dna/intent/api/v1/onboarding/pnp-device",
+					"protocol": "https",
+					"host": [
+						"{{dnac}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"onboarding",
+						"pnp-device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://{{dnac}}/dna/intent/api/v1/onboarding/pnp-device",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"device_id\", data.deviceId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46R3JhcGV2aW5lMQ=="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{dnac}}:{{port}}/dna/intent/api/v1/onboarding/pnp-device",
+					"protocol": "https",
+					"host": [
+						"{{dnac}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"onboarding",
+						"pnp-device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://{{dnac}}:{{port}}/dna/intent/api/v1/onboarding/pnp-device/site-claim",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"console.log(\"here\");",
+							"console.log(data.response);",
+							"if (data.response) {",
+							"    for (i = 0; i < data.response.length; i++) { ",
+							"        if (data.response[i].timeType == 'GLOBAL'){",
+							"            postman.setEnvironmentVariable(\"GLOBALtime\", data.response[i].time  );",
+							"        }",
+							"        if (data.response[i].timeType == 'CLIENT'){",
+							"            postman.setEnvironmentVariable(\"CLIENTtime\", data.response[i].time  );",
+							"        }",
+							"    }",
+							"}",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"deviceId\": \"6355ea112c9582000bef58d7\",\n    \"siteId\": \"468f08fe-c274-41c7-a651-30492440ff66\",\n    \"type\": \"Default\",\n    \"imageInfo\": {\n        \"imageId\": \"3b5ff480-a2d4-465a-936b-6786f01f5f6b\",\n        \"skip\": false\n    },\n    \"configInfo\": {\n            \"configId\": \"7c0351a7-ad90-4b6d-bacc-50ceb162bfb7\",\n            \"configParameters\":[\n                {\n                \"key\":\"headend\",\n                \"value\": \"true\"\n                },\n                {\n                \"key\":\"loop0_address\",\n                \"value\": \"192.168.0.1\"\n                },\n                {\n                \"key\":\"corp_ipaddress_input\",\n                \"value\": \"10.1.1.0 255.255.255.0\"\n                },\n                {\n                \"key\":\"mgmt_ipaddress_input\",\n                \"value\": \"10.1.2.0 255.255.255.0\"\n                },\n                {\n                \"key\":\"prod_ipaddress_input\",\n                \"value\": \"10.1.3.0 255.255.255.0\"\n                },\n                {\n                \"key\":\"cctv_ipaddress_input\",\n                \"value\": \"10.1.4.0 255.255.255.0\"\n                }\n            ]\n    }\n}  ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dnac}}:{{port}}/dna/intent/api/v1/onboarding/pnp-device/site-claim",
+					"protocol": "https",
+					"host": [
+						"{{dnac}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"onboarding",
+						"pnp-device",
+						"site-claim"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "dnac",
+			"value": "DNA IP"
+		},
+		{
+			"key": "port",
+			"value": "443"
+		},
+		{
+			"key": "username",
+			"value": "admin"
+		},
+		{
+			"key": "password",
+			"value": "password"
+		},
+		{
+			"key": "device_serial",
+			"value": "Serial Here",
+			"type": "string"
+		}
+	]
+}
