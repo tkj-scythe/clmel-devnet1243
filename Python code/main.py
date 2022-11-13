@@ -33,7 +33,6 @@ UPDATE_RBACL = """
 """
 
 def iosxe_connect(host, port, user, password):
-
     return manager.connect(host=host,
                            port=port,
                            username=user,
