@@ -3,7 +3,6 @@ import sys
 import logging
 from ncclient import manager
 
-#log = logging.getLogger(__name__)
 
 
 UPDATE_RBACL = """

@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Get Token",
+			"name": "1.0 Get Token",
 			"event": [
 				{
 					"listen": "test",
@@ -81,7 +81,7 @@
 			"response": []
 		},
 		{
-			"name": "https://{{dnac}}:{{port}}/dna/intent/api/v1/onboarding/pnp-device",
+			"name": "2.0 Add Device with Serial",
 			"event": [
 				{
 					"listen": "test",
@@ -123,7 +123,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"deviceInfo\": {\n        \"hostname\": \"SVOL-IE3400-01\",\n        \"serialNumber\": \"{{device_serial}}\",\n        \"tags\": \"TrustSec\"\n        }\n    }\n}\n",
+					"raw": "{\n    \"deviceInfo\": {\n        \"hostname\": \"{{device_name}}\",\n        \"serialNumber\": \"{{device_serial}}\"\n        }\n    }\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -150,7 +150,7 @@
 			"response": []
 		},
 		{
-			"name": "https://{{dnac}}/dna/intent/api/v1/onboarding/pnp-device",
+			"name": "3.0 Get Device ID",
 			"event": [
 				{
 					"listen": "test",
@@ -228,7 +228,191 @@
 			"response": []
 		},
 		{
-			"name": "https://{{dnac}}:{{port}}/dna/intent/api/v1/onboarding/pnp-device/site-claim",
+			"name": "3.1 Get IOS Image ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"image_id\", data.response[0].imageUuid);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "x-auth-token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{dnac}}:{{port}}/dna/intent/api/v1/image/importation?family=ie3x00&version=17.09.02",
+					"protocol": "https",
+					"host": [
+						"{{dnac}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"image",
+						"importation"
+					],
+					"query": [
+						{
+							"key": "family",
+							"value": "ie3x00"
+						},
+						{
+							"key": "version",
+							"value": "17.09.02"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 Get Template ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"image_id\", data.response[0].imageUuid);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "x-auth-token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{dnac}}:{{port}}/dna/intent/api/v1/image/importation?family=ie3x00&version=17.09.02",
+					"protocol": "https",
+					"host": [
+						"{{dnac}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"image",
+						"importation"
+					],
+					"query": [
+						{
+							"key": "family",
+							"value": "ie3x00"
+						},
+						{
+							"key": "version",
+							"value": "17.09.02"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.3 Get Site ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"site_id\", data.response[0].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "x-auth-token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{dnac}}:{{port}}/dna/intent/api/v1/site?name=global/Niflheim/Hvergelmir/River+Level",
+					"protocol": "https",
+					"host": [
+						"{{dnac}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "global/Niflheim/Hvergelmir/River+Level"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.0 Claim Device with Device ID",
 			"event": [
 				{
 					"listen": "test",
@@ -264,7 +448,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"deviceId\": \"6355ea112c9582000bef58d7\",\n    \"siteId\": \"468f08fe-c274-41c7-a651-30492440ff66\",\n    \"type\": \"Default\",\n    \"imageInfo\": {\n        \"imageId\": \"3b5ff480-a2d4-465a-936b-6786f01f5f6b\",\n        \"skip\": false\n    },\n    \"configInfo\": {\n            \"configId\": \"7c0351a7-ad90-4b6d-bacc-50ceb162bfb7\",\n            \"configParameters\":[\n                {\n                \"key\":\"headend\",\n                \"value\": \"true\"\n                },\n                {\n                \"key\":\"loop0_address\",\n                \"value\": \"192.168.0.1\"\n                },\n                {\n                \"key\":\"corp_ipaddress_input\",\n                \"value\": \"10.1.1.0 255.255.255.0\"\n                },\n                {\n                \"key\":\"mgmt_ipaddress_input\",\n                \"value\": \"10.1.2.0 255.255.255.0\"\n                },\n                {\n                \"key\":\"prod_ipaddress_input\",\n                \"value\": \"10.1.3.0 255.255.255.0\"\n                },\n                {\n                \"key\":\"cctv_ipaddress_input\",\n                \"value\": \"10.1.4.0 255.255.255.0\"\n                }\n            ]\n    }\n}  ",
+					"raw": "{\n    \"deviceId\": \"{{device_id}}\",\n    \"siteId\": \"{{site_id}}\",\n    \"type\": \"Default\",\n    \"imageInfo\": {\n        \"imageId\": \"{{image_id}}\",\n        \"skip\": false\n    },\n    \"configInfo\": {\n            \"configId\": \"{{template_id}}\",\n            \"configParameters\":[\n                \n                {\n                \"key\":\"mgmt_ipaddress_input\",\n                \"value\": \"10.1.2.2 255.255.255.0\"\n                }\n            ]\n    }\n}  ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -272,7 +456,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{dnac}}:{{port}}/dna/intent/api/v1/onboarding/pnp-device/site-claim",
+					"raw": "https://{{dnac}}:{{port}}/dna/intent/api/v1/onboarding/pnp-device/site-claim?=",
 					"protocol": "https",
 					"host": [
 						"{{dnac}}"
@@ -286,6 +470,12 @@
 						"onboarding",
 						"pnp-device",
 						"site-claim"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
 					]
 				}
 			},
@@ -315,7 +505,7 @@
 	"variable": [
 		{
 			"key": "dnac",
-			"value": "DNA IP"
+			"value": "10.66.238.118"
 		},
 		{
 			"key": "port",
@@ -327,11 +517,11 @@
 		},
 		{
 			"key": "password",
-			"value": "password"
+			"value": "Br15b@n3"
 		},
 		{
 			"key": "device_serial",
-			"value": "Serial Here",
+			"value": "FCW2502P03E",
 			"type": "string"
 		}
 	]
