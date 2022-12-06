@@ -1,0 +1,36 @@
+[
+  {
+    "name": "IE-IE3400-Interface-Templates-Updates-01",
+    "description": "",
+    "tags": [],
+    "deviceTypes": [
+      {
+        "productFamily": "Switches and Hubs",
+        "productSeries": "Cisco Catalyst IE3400 Rugged Series"
+      }
+    ],
+    "softwareType": "IOS",
+    "softwareVariant": "XE",
+    "templateContent": "template IP_CAMERA_INTERFACE_TEMPLATE\n spanning-tree portfast\n spanning-tree bpduguard enable\n switchport access vlan 40\n switchport mode access\n switchport block unicast\n switchport port-security",
+    "rollbackTemplateContent": "",
+    "templateParams": [],
+    "rollbackTemplateParams": [],
+    "composite": false,
+    "containingTemplates": [],
+    "language": "JINJA",
+    "promotedTemplateContent": "template IP_CAMERA_INTERFACE_TEMPLATE\n spanning-tree portfast\n spanning-tree bpduguard enable\n switchport access vlan 40\n switchport mode access\n switchport block unicast\n switchport port-security",
+    "promotedTemplateParams": [],
+    "customParamsOrder": false,
+    "createTime": 1666263192056,
+    "lastUpdateTime": 1666263243623,
+    "latestVersionTime": 1666263246634,
+    "validationErrors": {
+      "templateErrors": [],
+      "rollbackTemplateErrors": [],
+      "templateId": "30d07ab1-4894-42e2-a895-8911aab70215",
+      "templateVersion": null
+    },
+    "projectAssociated": true,
+    "documentDatabase": false
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "name": "IE-IE3400-Interface-Templates-with-SGT",
+    "description": "",
+    "tags": [],
+    "deviceTypes": [
+      {
+        "productFamily": "Switches and Hubs",
+        "productSeries": "Cisco Catalyst IE3400 Rugged Series"
+      }
+    ],
+    "softwareType": "IOS",
+    "softwareVariant": "XE",
+    "templateContent": "cts role-based enforcement\n\ntemplate IP_CAMERA_INTERFACE_TEMPLATE\n spanning-tree portfast\n spanning-tree bpduguard enable\n switchport access vlan 40\n switchport mode access\n switchport block unicast\n switchport port-security\n device-tracking attach-policy IPDT_POLICY\n cts manual\n  policy static sgt 40\n  no propagate sgt",
+    "rollbackTemplateContent": "",
+    "templateParams": [],
+    "rollbackTemplateParams": [],
+    "composite": false,
+    "containingTemplates": [],
+    "language": "JINJA",
+    "promotedTemplateContent": "cts role-based enforcement\n\ntemplate IP_CAMERA_INTERFACE_TEMPLATE\n spanning-tree portfast\n spanning-tree bpduguard enable\n switchport access vlan 40\n switchport mode access\n switchport block unicast\n switchport port-security\n device-tracking attach-policy IPDT_POLICY\n cts manual\n  policy static sgt 40\n  no propagate sgt",
+    "promotedTemplateParams": [],
+    "customParamsOrder": false,
+    "createTime": 1666264819314,
+    "lastUpdateTime": 1668305935858,
+    "latestVersionTime": 1668305938740,
+    "validationErrors": {
+      "templateErrors": [],
+      "rollbackTemplateErrors": [],
+      "templateId": "4b3a31df-bb0e-405b-bce3-26038ddd6853",
+      "templateVersion": null
+    },
+    "projectAssociated": true,
+    "documentDatabase": false
+  }
+]

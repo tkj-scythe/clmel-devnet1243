@@ -1,0 +1,36 @@
+[
+  {
+    "name": "IE-IE3400-SGACLs",
+    "description": "",
+    "tags": [],
+    "deviceTypes": [
+      {
+        "productFamily": "Switches and Hubs",
+        "productSeries": "Cisco Catalyst IE3400 Rugged Series"
+      }
+    ],
+    "softwareType": "IOS",
+    "softwareVariant": "XE",
+    "templateContent": "ip access-list role-based allow-all\n 10 permit ip\nip access-list role-based allow-ping-only\n 10 permit icmp\n 20 deny ip\nip access-list role-based allow-ssh-only\n 10 permit tcp dst eq 22\n 20 deny ip\nip access-list role-based deny-all\n 10 deny ip",
+    "rollbackTemplateContent": "",
+    "templateParams": [],
+    "rollbackTemplateParams": [],
+    "composite": false,
+    "containingTemplates": [],
+    "language": "JINJA",
+    "promotedTemplateContent": "ip access-list role-based allow-all\n 10 permit ip\nip access-list role-based allow-ping-only\n 10 permit icmp\n 20 deny ip\nip access-list role-based allow-ssh-only\n 10 permit tcp dst eq 22\n 20 deny ip\nip access-list role-based deny-all\n 10 deny ip",
+    "promotedTemplateParams": [],
+    "customParamsOrder": false,
+    "createTime": 1668256356500,
+    "lastUpdateTime": 1668306306148,
+    "latestVersionTime": 1668306309265,
+    "validationErrors": {
+      "templateErrors": [],
+      "rollbackTemplateErrors": [],
+      "templateId": "78d0b1d9-b8c9-4eac-a90f-d5f05fbf35f9",
+      "templateVersion": null
+    },
+    "projectAssociated": true,
+    "documentDatabase": false
+  }
+]
