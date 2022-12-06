@@ -1,6 +1,6 @@
 [
   {
-    "name": "IE-Automation-PnP-IE3400-Stubs-Jinja_7101221235110",
+    "name": "IE-Automation-PnP-IE3400-Edge-Jinja_7101221235110",
     "description": "",
     "tags": [],
     "deviceTypes": [
@@ -11,7 +11,7 @@
     ],
     "softwareType": "IOS",
     "softwareVariant": "XE",
-    "templateContent": "\n\n\n{% set mgmt_list = mgmt_ipaddress_input.split(' ') %}\n{% set mgmt_ip = mgmt_list[0] %}\n{% set mgmt_mask = mgmt_list[1] %}\n\n\n##pub key for tom\nusername tom privilege 15 secret 9 $9$dfyzBBDAznBeM5$/XuqMen2.Ulwlbs4Vsqzhd6/aCGuN4v0jIkmTHPCKX6\n\nip ssh pubkey-chain\n  username tom\n   key-hash ssh-rsa 4E8E36C660188E67A004B4A2CFF9EDB3\n\n##timetamps etc\nclock timezone AEST 10 0\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime year\n\n##aaa config\naaa new-model\naaa authentication login default local\naaa authorization exec default local\naaa authorization console\n\n\n\n##enable programability\nnetconf-yang\nrestconf\n\nvlan 10\n name CORP\n state active\nvlan 20\n name MGMT\n state active\nvlan 30\n name PROD\n state active\nvlan 40\n name CCTV\n state active\nvlan 524\n state active\n \n##downstream pnp\npnp startup-vlan 524\n\n\n\ninterface vlan 20\n description MGMT SVI\n ip address {{ mgmt_ip }} {{ mgmt_mask }}\n no shut\n \ninterface range GigabitEthernet1/1-2\n description RING INTERFACE\n switchport mode trunk\n rep segment 1\n rep ztp\n\ninterface range GigabitEthernet1/3-9\n shutdown\n switchport mode access\n spanning-tree portfast\n sw access vlan 666\n description UNCONFIGURED ACCESS PORT\n\n\ndevice-tracking policy IPDT_POLICY\n tracking enable\n ",
+    "templateContent": "\n\n\n{% set mgmt_list = mgmt_ipaddress_input.split(' ') %}\n{% set mgmt_ip = mgmt_list[0] %}\n{% set mgmt_mask = mgmt_list[1] %}\n\n\n##pub key for user\nusername user privilege 15 secret 9 XXXX\n\nip ssh pubkey-chain\n  username user\n   key-hash ssh-rsa XXXXX\n\n##timetamps etc\nclock timezone AEST 10 0\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime year\n\n##aaa config\naaa new-model\naaa authentication login default local\naaa authorization exec default local\naaa authorization console\n\n\n\n##enable programability\nnetconf-yang\nrestconf\n\nvlan 10\n name CORP\n state active\nvlan 20\n name MGMT\n state active\nvlan 30\n name PROD\n state active\nvlan 40\n name CCTV\n state active\nvlan 524\n state active\n \n##downstream pnp\npnp startup-vlan 524\n\n\n\ninterface vlan 20\n description MGMT SVI\n ip address {{ mgmt_ip }} {{ mgmt_mask }}\n no shut\n \ninterface range GigabitEthernet1/1-2\n description RING INTERFACE\n switchport mode trunk\n rep segment 1\n rep ztp\n\ninterface range GigabitEthernet1/3-9\n shutdown\n switchport mode access\n spanning-tree portfast\n sw access vlan 666\n description UNCONFIGURED ACCESS PORT\n\n\ndevice-tracking policy IPDT_POLICY\n tracking enable\n ",
     "rollbackTemplateContent": "",
     "templateParams": [
       {
@@ -115,33 +115,8 @@
     "composite": false,
     "containingTemplates": [],
     "language": "JINJA",
-    "promotedTemplateContent": "\n\n\n{% set mgmt_list = mgmt_ipaddress_input.split(' ') %}\n{% set mgmt_ip = mgmt_list[0] %}\n{% set mgmt_mask = mgmt_list[1] %}\n\n\n##pub key for tom\nusername tom privilege 15 secret 9 $9$dfyzBBDAznBeM5$/XuqMen2.Ulwlbs4Vsqzhd6/aCGuN4v0jIkmTHPCKX6\n\nip ssh pubkey-chain\n  username tom\n   key-hash ssh-rsa 4E8E36C660188E67A004B4A2CFF9EDB3\n\n##timetamps etc\nclock timezone AEST 10 0\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime year\n\n##aaa config\naaa new-model\naaa authentication login default local\naaa authorization exec default local\naaa authorization console\n\n\n\n##enable programability\nnetconf-yang\nrestconf\n\nvlan 10\n name CORP\n state active\nvlan 20\n name MGMT\n state active\nvlan 30\n name PROD\n state active\nvlan 40\n name CCTV\n state active\nvlan 524\n state active\n \n##downstream pnp\npnp startup-vlan 524\n\n\n\ninterface vlan 20\n description MGMT SVI\n ip address {{ mgmt_ip }} {{ mgmt_mask }}\n no shut\n \ninterface range GigabitEthernet1/1-2\n description RING INTERFACE\n switchport mode trunk\n rep segment 1\n rep ztp\n\ninterface range GigabitEthernet1/3-9\n shutdown\n switchport mode access\n spanning-tree portfast\n sw access vlan 666\n description UNCONFIGURED ACCESS PORT\n\n\ndevice-tracking policy IPDT_POLICY\n tracking enable\n ",
+    "promotedTemplateContent": "\n\n\n{% set mgmt_list = mgmt_ipaddress_input.split(' ') %}\n{% set mgmt_ip = mgmt_list[0] %}\n{% set mgmt_mask = mgmt_list[1] %}\n\n\n##pub key for user\nusername user privilege 15 secret 9 XXXX\n\nip ssh pubkey-chain\n  username user\n   key-hash ssh-rsa XXXXX\n\n##timetamps etc\nclock timezone AEST 10 0\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime year\n\n##aaa config\naaa new-model\naaa authentication login default local\naaa authorization exec default local\naaa authorization console\n\n\n\n##enable programability\nnetconf-yang\nrestconf\n\nvlan 10\n name CORP\n state active\nvlan 20\n name MGMT\n state active\nvlan 30\n name PROD\n state active\nvlan 40\n name CCTV\n state active\nvlan 524\n state active\n \n##downstream pnp\npnp startup-vlan 524\n\n\n\ninterface vlan 20\n description MGMT SVI\n ip address {{ mgmt_ip }} {{ mgmt_mask }}\n no shut\n \ninterface range GigabitEthernet1/1-2\n description RING INTERFACE\n switchport mode trunk\n rep segment 1\n rep ztp\n\ninterface range GigabitEthernet1/3-9\n shutdown\n switchport mode access\n spanning-tree portfast\n sw access vlan 666\n description UNCONFIGURED ACCESS PORT\n\n\ndevice-tracking policy IPDT_POLICY\n tracking enable\n ",
     "promotedTemplateParams": [
-      {
-        "parameterName": "mgmt_ipaddress_input",
-        "dataType": "STRING",
-        "defaultValue": null,
-        "description": "Address with subnet in dotted quad format",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "Management Network (eg, 10.1.2.0 255.255.255.0)",
-        "group": null,
-        "order": 1,
-        "customOrder": 4,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "id": null,
-        "displayName": null
-      },
       {
         "parameterName": "mgmt_list",
         "dataType": "STRING",
@@ -156,6 +131,31 @@
         "customOrder": 7,
         "selection": {
           "selectionType": "MULTI_SELECT",
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "id": null,
+        "displayName": null
+      },
+      {
+        "parameterName": "mgmt_ipaddress_input",
+        "dataType": "STRING",
+        "defaultValue": null,
+        "description": "Address with subnet in dotted quad format",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": "Management Network (eg, 10.1.2.0 255.255.255.0)",
+        "group": null,
+        "order": 1,
+        "customOrder": 4,
+        "selection": {
+          "selectionType": null,
           "selectionValues": {},
           "defaultSelectedValues": [],
           "id": null
@@ -220,8 +220,8 @@
     ],
     "customParamsOrder": false,
     "createTime": 1667784945613,
-    "lastUpdateTime": 1668244648295,
-    "latestVersionTime": 1668244651814,
+    "lastUpdateTime": 1670287537533,
+    "latestVersionTime": 1670287541135,
     "validationErrors": {
       "templateErrors": [],
       "rollbackTemplateErrors": [],
