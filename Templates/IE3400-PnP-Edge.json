@@ -15,7 +15,7 @@
     "rollbackTemplateContent": "",
     "templateParams": [
       {
-        "parameterName": "mgmt_mask",
+        "parameterName": "mgmt_ip",
         "dataType": "STRING",
         "defaultValue": null,
         "description": null,
@@ -24,7 +24,7 @@
         "paramArray": false,
         "instructionText": null,
         "group": null,
-        "order": 4,
+        "order": 3,
         "customOrder": 0,
         "selection": {
           "selectionType": null,
@@ -39,7 +39,31 @@
         "displayName": null
       },
       {
-        "parameterName": "mgmt_ip",
+        "parameterName": "mgmt_ipaddress_input",
+        "dataType": "STRING",
+        "defaultValue": null,
+        "description": "Address with subnet in dotted quad format",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": "Management Network (eg, 10.1.2.0 255.255.255.0)",
+        "group": null,
+        "order": 1,
+        "customOrder": 4,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "displayName": null
+      },
+      {
+        "parameterName": "mgmt_mask",
         "dataType": "STRING",
         "defaultValue": null,
         "description": null,
@@ -48,7 +72,7 @@
         "paramArray": false,
         "instructionText": null,
         "group": null,
-        "order": 3,
+        "order": 4,
         "customOrder": 0,
         "selection": {
           "selectionType": null,
@@ -76,30 +100,6 @@
         "customOrder": 7,
         "selection": {
           "selectionType": "MULTI_SELECT",
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "displayName": null
-      },
-      {
-        "parameterName": "mgmt_ipaddress_input",
-        "dataType": "STRING",
-        "defaultValue": null,
-        "description": "Address with subnet in dotted quad format",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "Management Network (eg, 10.1.2.0 255.255.255.0)",
-        "group": null,
-        "order": 1,
-        "customOrder": 4,
-        "selection": {
-          "selectionType": null,
           "selectionValues": {},
           "defaultSelectedValues": [],
           "id": null
@@ -143,6 +143,31 @@
         "displayName": null
       },
       {
+        "parameterName": "mgmt_list",
+        "dataType": "STRING",
+        "defaultValue": null,
+        "description": null,
+        "required": false,
+        "notParam": true,
+        "paramArray": true,
+        "instructionText": null,
+        "group": null,
+        "order": 2,
+        "customOrder": 7,
+        "selection": {
+          "selectionType": "MULTI_SELECT",
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "id": null,
+        "displayName": null
+      },
+      {
         "parameterName": "mgmt_mask",
         "dataType": "STRING",
         "defaultValue": null,
@@ -181,31 +206,6 @@
         "customOrder": 0,
         "selection": {
           "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "id": null,
-        "displayName": null
-      },
-      {
-        "parameterName": "mgmt_list",
-        "dataType": "STRING",
-        "defaultValue": null,
-        "description": null,
-        "required": false,
-        "notParam": true,
-        "paramArray": true,
-        "instructionText": null,
-        "group": null,
-        "order": 2,
-        "customOrder": 7,
-        "selection": {
-          "selectionType": "MULTI_SELECT",
           "selectionValues": {},
           "defaultSelectedValues": [],
           "id": null
